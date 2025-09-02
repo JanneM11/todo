@@ -3,7 +3,7 @@ import { Router } from "express";
 
 const router = Router()
 
-router.get('/',(req,res) => {
+router.get('/',(req,res,next) => {
     pool.query('SELECT * FROM task',(err,result) => {
         if(err){
             return next(err)
@@ -12,7 +12,7 @@ router.get('/',(req,res) => {
     })
 })
 
-router.post('/create',(req,res) => {
+router.post('/create',(req,res,next) => {
     const { task } = req.body
 
     if(!task) {
@@ -28,7 +28,7 @@ router.post('/create',(req,res) => {
         })
 })
 
-router.delete('/delete/:id', (req,res) => {
+router.delete('/delete/:id', (req,res,next) => {
     const { id } = req.params
 
     console.log(`Deleting task with id: ${id}`)
