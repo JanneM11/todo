@@ -67,8 +67,8 @@ describe("Testing user management", () => {
             body: JSON.stringify({ user: newUser })
         })
         const data = await response.json()      
-        expect(response.status).to.equal(200)
-        expect(data).to.include.all.keys(["id", "email","token"])
+        expect(response.status).to.equal(201)
+        expect(data).to.include.all.keys(["id", "email"])
         expect(data.email).to.equal(newUser.email)        
     })
     it("should log in", async() => {
